@@ -19,7 +19,7 @@ terraform {
 
 # Configure the AWS Provider - uses OIDC role
 provider "aws" {
-  region = "eu-north-1"
+  #region = "eu-north-1"
   #shared_config_files      = ["~/.aws/config"]
   #shared_credentials_files = ["~/.aws/credentials"]
   #profile                  = "default"

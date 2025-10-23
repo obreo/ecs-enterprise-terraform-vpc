@@ -8,7 +8,8 @@ variable "metadata" {
 variable "subnets" {
   description = "List of subnet IDs"
   type        = object({
-    public_subnets  = list(string)
-    private_subnets = list(string)
+    vpc_cidr_block             = string
+    public_subnet_cidr_blocks  = list(string)
+    private_subnet_cidr_blocks = list(string)
   })
 }

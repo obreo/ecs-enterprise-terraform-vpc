@@ -2,9 +2,9 @@ module "vpc" {
   source = "git::https://github.com/obreo/iac-modules.git//terraform/vpc?ref=main"
   name   = "ecs-enterprise-${var.metadata.environment}"
   vpc_settings = {
-    vpc_cidr_block             = var.vpc.cidr_block
-    public_subnet_cidr_blocks  = var.subnets.public_subnets
-    private_subnet_cidr_blocks = var.subnets.private_subnets
+    vpc_cidr_block             = var.subnets.vpc_cidr_block
+    public_subnet_cidr_blocks  = var.subnets.public_subnet_cidr_blocks
+    private_subnet_cidr_blocks = var.subnets.private_subnet_cidr_blocks
     create_private_subnets_nat = { nat_per_az = false } # Optional
     availability_zones         = ["eu-north-1a", "eu-north-1b"] # Optional
     enable_dns_hostnames       = true # Optional
