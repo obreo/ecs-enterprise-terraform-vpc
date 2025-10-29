@@ -1,7 +1,7 @@
-output "security_group_ids" {
-  description = "Default security group ID"
-  value       = module.vpc.security_group_ids
-}
+# output "security_group_ids" {
+#   description = "Default security group ID"
+#   value       = module.vpc.security_group_ids
+# }
 
 output "public_subnet_cidr_blocks" {
   description = "List of private subnet CIDR blocks"
