@@ -1,7 +1,11 @@
-# output "security_group_ids" {
-#   description = "Default security group ID"
-#   value       = module.vpc.security_group_ids
-# }
+output "security_group_ids" {
+  description = "All ECS enterprise security group IDs"
+  value = {
+    alb_sg       = module.ecs-enterprise-alb-sg.security_group_id
+    frontend_sg  = module.ecs-enterprise-frontend-sg.security_group_id
+    backend_sg   = module.ecs-enterprise-backend-sg.security_group_id
+  }
+}
 
 output "public_subnet_cidr_blocks" {
   description = "List of private subnet CIDR blocks"

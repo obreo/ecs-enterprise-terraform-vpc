@@ -34,6 +34,15 @@ module "ecs-enterprise-alb-sg" {
       cidr_blocks = "0.0.0.0/0"
     }
   ]
+  egress_with_cidr_blocks = [
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      description = "Allow all outbound traffic"
+      cidr_blocks = "0.0.0.0/0"
+    }
+  ]
 }
 
 module "ecs-enterprise-frontend-sg" {
@@ -51,6 +60,15 @@ module "ecs-enterprise-frontend-sg" {
       source_security_group_id = module.ecs-enterprise-alb-sg.security_group_id
     }
   ]
+  egress_with_cidr_blocks = [
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      description = "Allow all outbound traffic"
+      cidr_blocks = "0.0.0.0/0"
+    }
+  ]
 }
 
 module "ecs-enterprise-backend-sg" {
@@ -66,6 +84,15 @@ module "ecs-enterprise-backend-sg" {
       protocol    = "tcp"
       description = "exposing backend ports forfrontend access"
       source_security_group_id = module.ecs-enterprise-frontend-sg.security_group_id
+    }
+  ]
+  egress_with_cidr_blocks = [
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      description = "Allow all outbound traffic"
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
 }
