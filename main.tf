@@ -32,7 +32,14 @@ module "ecs-enterprise-alb-sg" {
       protocol    = "tcp"
       description = "User-service ports"
       cidr_blocks = "0.0.0.0/0"
-    }
+    },
+    {
+      from_port   = 8080
+      to_port     = 8080
+      protocol    = "tcp"
+      description = "User-service ports"
+      cidr_blocks = "0.0.0.0/0"
+    },
   ]
   egress_with_cidr_blocks = [
     {
