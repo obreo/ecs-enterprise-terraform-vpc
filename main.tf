@@ -86,11 +86,18 @@ module "ecs-enterprise-backend-sg" {
   vpc_id      = module.vpc.vpc_id
   ingress_with_source_security_group_id = [
     {
-      from_port   = 5000
-      to_port     = 5000
+      from_port   = 80
+      to_port     = 80
       protocol    = "tcp"
       description = "exposing backend ports forfrontend access"
       source_security_group_id = module.ecs-enterprise-frontend-sg.security_group_id
+    },
+    {
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      description = "exposing backend ports forfrontend access"
+      source_security_group_id = module.ecs-enterprise-alb-sg.security_group_id
     }
   ]
   egress_with_cidr_blocks = [
