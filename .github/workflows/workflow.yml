@@ -6,7 +6,7 @@ on:
     branches:
       - production
       #- staging
-      - development
+      #- development
   workflow_dispatch:
 
 permissions:
@@ -46,9 +46,12 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -var-file=${{env.VARIABLES}}
 
+      - name: Terraform Apply
+        run: terraform apply -auto-approve "tfplan"
+
       - name: Report Success
         if: success()
-        run: echo "✅ Terraform validation succeeded!"
+        run: echo "✅ Terraform apply succeeded for the ${{github.ref_name}} environment!"
 
 
   staging:
